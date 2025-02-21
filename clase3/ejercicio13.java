@@ -20,8 +20,9 @@ public class ejercicio13 {
         for (int i = 0; i < a.length; i++) {
             a[i]=(int)(Math.random() * (50-0)) + 0 ;
             System.out.println(a[i]+" ");
-            System.out.println();
+        
         }
+        System.out.println();
         //calcular la media del arreglo a 
         //declarar una variable que almacene la suma del arreglo
         int sumaArreglo=0;
@@ -36,7 +37,7 @@ public class ejercicio13 {
         //y por debajo de la media.
         int contadormayormedia=0, contadormenormedia=0;
         for (int i = 0; i < a.length; i++) {
-            if(a[i]>=media){
+            if(a[i]>=Media){
                 contadormayormedia++;
             }else{ 
                 contadormenormedia++;
@@ -52,7 +53,7 @@ public class ejercicio13 {
 
         int posmayores=0,posmenores=0;
         for (int i = 0; i < a.length; i++) {
-            if(a[i]>=media){
+            if(a[i]>=Media){
                 mayores[posmayores]=a[i];
                 posmayores++;
             
@@ -74,7 +75,7 @@ public class ejercicio13 {
             
 
 
-            }
+        
        
        //mostrar el arreglo de los menores a la media
        for(int i= 0; i <menores.length;i++){
