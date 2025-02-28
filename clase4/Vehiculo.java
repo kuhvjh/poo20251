@@ -48,7 +48,7 @@ public class Vehiculo {
         System.out.println("vehiculo girando izquiera...");
     }
 
-    public voi girarderecha (){
+    public void girarderecha (){
         System.out.println("vehiculo girando derecha");
     }
 
