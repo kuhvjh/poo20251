@@ -1,14 +1,42 @@
 import java.util.Date;
 
-public class parqueadero {
+class Moto {
+    private String placa;
+    private boolean bajoCilindraje;
 
-    //atributos de clase
-    private double[] puestosBajoCilindraje = new moto[20];
-    private double[] puestosAltoCilindraje = new Moto[10];
-    private String[] horaEntradaBajoCilindraje = new Date[20];
-    private String[] horaEntradaAltoCilindraje = new Date[10];
-//  constructor de la clase
-    public  registrarMoto(moto moto) {
+    public Moto(String placa, boolean bajoCilindraje) {
+        this.placa = placa;
+        this.bajoCilindraje = bajoCilindraje;
+    }
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public boolean esBajoCilindraje() {
+        return bajoCilindraje;
+    }
+}
+
+public class Moto {
+    private Moto[] puestosBajoCilindraje;
+    private Moto[] puestosAltoCilindraje;
+    private Date[] horaEntradaBajoCilindraje;
+    private Date[] horaEntradaAltoCilindraje;
+
+    public Moto() {
+        puestosBajoCilindraje = new Moto[20];
+        puestosAltoCilindraje = new Moto[10];
+        horaEntradaBajoCilindraje = new Date[20];
+        horaEntradaAltoCilindraje = new Date[10];
+    }
+
+    public boolean registrarMoto(Moto moto) {
+        if (moto == null) {
+            System.out.println("Error: La moto es nula.");
+            return false;
+        }
+        
         Moto[] puestos = moto.esBajoCilindraje() ? puestosBajoCilindraje : puestosAltoCilindraje;
         Date[] horasEntrada = moto.esBajoCilindraje() ? horaEntradaBajoCilindraje : horaEntradaAltoCilindraje;
 
@@ -25,11 +53,23 @@ public class parqueadero {
     }
 
     private double calcularCosto(Date horaEntrada, Date horaSalida) {
+        if (horaEntrada == null || horaSalida == null) {
+            System.out.println("Error: Fechas no válidas.");
+            return 0;
+        }
+        
         long minutos = (horaSalida.getTime() - horaEntrada.getTime()) / (60 * 1000);
-        return minutos <= 30 ? 0 : (minutos <= 60 ? 800 : 2000);
+        if (minutos <= 30) return 0;
+        if (minutos <= 60) return 800;
+        return 2000;
     }
 
     public double retirarMoto(String placa) {
+        if (placa == null || placa.isEmpty()) {
+            System.out.println("Error: Placa no válida.");
+            return 0;
+        }
+        
         Moto[][] puestos = {puestosBajoCilindraje, puestosAltoCilindraje};
         Date[][] horasEntrada = {horaEntradaBajoCilindraje, horaEntradaAltoCilindraje};
 
